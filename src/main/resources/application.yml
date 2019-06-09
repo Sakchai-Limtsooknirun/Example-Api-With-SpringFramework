@@ -1,0 +1,22 @@
+server:
+  port: 1150
+  servlet:
+    contextPath: /api
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/db_webservice
+    username: webservice
+    password: P@ssw0rd
+#    $ sudo mysql --password
+#    mysql> create database db_webservice;
+#    mysql> create user 'webservice'@'localhost' identified by 'P@ssw0rd'
+#    mysql> grant all on db_webservice.* to 'webservice'@'localhost';
+  security:
+    user:
+      name: jay23513
+      password: P@ssw0rd
