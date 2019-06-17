@@ -1,8 +1,8 @@
 package com.example.demo.Repository;
 
-import com.example.demo.Entity.customer.Customer;
+import com.example.demo.model.Customer;
 import org.springframework.data.repository.CrudRepository;
-import java.util.List;
+
 import java.util.Optional;
 
 

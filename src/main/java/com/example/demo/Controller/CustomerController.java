@@ -1,6 +1,6 @@
 package com.example.demo.Controller;
 
-import com.example.demo.Entity.customer.Customer;
+import com.example.demo.model.Customer;
 import com.example.demo.Service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,7 +25,7 @@ public class CustomerController {
 
     @GetMapping("/{id}")
     //Method GET http://localhost:1150/api/customers/{id}
-    public ResponseEntity<?> getCustomer(@PathVariable Long id) {
+    public ResponseEntity getCustomer(@PathVariable Long id) {
         Optional<Customer> customer = customerService.retrieveCustomer(id);
         if(!customer.isPresent()) {
             return ResponseEntity.notFound().build();
@@ -42,7 +42,7 @@ public class CustomerController {
 
     @PostMapping()
     //Method POST http://localhost:1150/api/customers with customer payload data
-    public ResponseEntity<?> postCustomer(@Valid @RequestBody Customer body) {
+    public ResponseEntity postCustomer(@Valid @RequestBody Customer body) {
         Optional<Customer> customer = customerService.retrieveCustomer(body.getFirstName());
         if(customer.isPresent()) {
             return ResponseEntity.status(HttpStatus.CONFLICT).build();
@@ -54,7 +54,7 @@ public class CustomerController {
 
     @PutMapping("/{id}")
     //Method PUT http://localhost:1150/api/customers/{id} with new customer body that will edit
-    public ResponseEntity<?> putCustomer(@PathVariable Long id, @Valid @RequestBody Customer body) {
+    public ResponseEntity putCustomer(@PathVariable Long id, @Valid @RequestBody Customer body) {
         Optional<Customer> customer = customerService.updateCustomer(id, body);
         if(!customer.isPresent()) {
             return ResponseEntity.notFound().build();
@@ -63,7 +63,7 @@ public class CustomerController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteCustomer(@PathVariable Long id) {
+    public ResponseEntity deleteCustomer(@PathVariable Long id) {
         if(!customerService.deleteCustomer(id)) {
             return ResponseEntity.notFound().build();
         }

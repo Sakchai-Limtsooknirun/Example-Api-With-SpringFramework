@@ -1,4 +1,4 @@
-package com.example.demo.Entity.customer;
+package com.example.demo.model;
 
 import lombok.Data;
 import javax.persistence.*;
@@ -6,6 +6,7 @@ import javax.validation.constraints.*;
 
 @Data
 @Entity
+
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
